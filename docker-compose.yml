@@ -1,0 +1,9 @@
+services:
+  cosmic-puzzle:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - ORBITPORT_CLIENT_ID=${ORBITPORT_CLIENT_ID:-}
+      - ORBITPORT_CLIENT_SECRET=${ORBITPORT_CLIENT_SECRET:-}

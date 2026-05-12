@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  --background: #02040a;
+  --foreground: #e6faff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-orbitron);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #071931 0%, #03050a 45%, #000000 100%);
+  color: var(--foreground);
+}
+
+/* Reduce double-tap zoom delay on game controls (iOS Safari) */
+button,
+[role="button"] {
+  touch-action: manipulation;
+}
