@@ -406,18 +406,21 @@ export default function Home() {
       gridTouchStartRef.current = null;
       if (!start || !gridTouchGesturesEnabled) return;
 
-      let touch: Touch | null = null;
-      for (let i = 0; i < event.changedTouches.length; i += 1) {
-        const candidate = event.changedTouches.item(i);
-        if (candidate && candidate.identifier === start.id) {
-          touch = candidate;
+      const changed = event.changedTouches;
+      let endClientX: number | undefined;
+      let endClientY: number | undefined;
+      for (let i = 0; i < changed.length; i += 1) {
+        const candidate = changed[i];
+        if (candidate.identifier === start.id) {
+          endClientX = candidate.clientX;
+          endClientY = candidate.clientY;
           break;
         }
       }
-      if (!touch) return;
+      if (endClientX === undefined || endClientY === undefined) return;
 
-      const dx = touch.clientX - start.x;
-      const dy = touch.clientY - start.y;
+      const dx = endClientX - start.x;
+      const dy = endClientY - start.y;
       const elapsed = Date.now() - start.t;
       const distance = Math.hypot(dx, dy);
 
