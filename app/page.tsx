@@ -733,8 +733,9 @@ export default function Home() {
       </div>
 
       {!hasGameStarted && (
-        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/55 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-2xl border border-cyan-200/30 bg-white/10 p-6 text-center shadow-[0_20px_40px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
+        <div className="fixed inset-0 z-20 overflow-y-auto overflow-x-hidden bg-black/55 px-4 pt-6 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))] backdrop-blur-sm">
+          <div className="mx-auto flex min-h-[100dvh] w-full max-w-md flex-col items-center justify-center py-4">
+            <div className="w-full rounded-2xl border border-cyan-200/30 bg-white/10 p-6 text-center shadow-[0_20px_40px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
             <h3 className="text-2xl font-bold text-cyan-200">Choose Level & Grid</h3>
             <p className="mt-2 text-sm text-cyan-100/80">
               Pick a mode before starting. You can change it again only after game over.
@@ -817,6 +818,7 @@ export default function Home() {
             >
               Start Game
             </motion.button>
+            </div>
           </div>
         </div>
       )}
@@ -827,14 +829,15 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-30 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-30 overflow-y-auto overflow-x-hidden bg-black/50 px-4 pt-6 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))] backdrop-blur-sm"
           >
+            <div className="mx-auto flex min-h-[100dvh] w-full max-w-sm flex-col items-center justify-center py-4">
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 12 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ type: "spring", stiffness: 220, damping: 20 }}
-              className="w-full max-w-sm rounded-2xl border border-cyan-200/30 bg-white/15 p-6 text-center backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
+              className="w-full rounded-2xl border border-cyan-200/30 bg-white/15 p-6 text-center backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
             >
               <h3 className="text-2xl font-bold text-cyan-200">Game Over</h3>
               <p className="mt-2 text-sm text-cyan-100/85">Your final score is {score}</p>
@@ -893,6 +896,7 @@ export default function Home() {
                 Start New Game
               </motion.button>
             </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
